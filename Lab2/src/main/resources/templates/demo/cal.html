@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}"></title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <form action="/cal/check">
+        <h1 th:text="${subject}"></h1>
+        <a>Chiều dài</a>
+        <br>
+        <input name="cd" placeholder="Nhập chiều dài" />
+        <br>
+        <a>Chiều rộng</a>
+        <br>
+        <input name="cr" placeholder="Nhập chiều rộng" />
+        <button>Tính</button>
+    </form>
+
+    <h5 th:text="${message}"></h5>
+</body>
+</html>

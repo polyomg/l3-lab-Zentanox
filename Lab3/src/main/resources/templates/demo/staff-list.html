@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:each="staff, st: ${list}">
+    <img th:src="@{/photos/${staff.photo}}" style="height:40px">
+    <b th:text="@{|${st.count}.|}"></b>
+    <b th:text="${#strings.capitalizeWords(staff.fullname)}"></b>,
+    <b th:text="${#numbers.formatDecimal(staff.salary, 0, 'COMMA', 0, 'POINT')}"></b>
+    <th:block th:if="${!st.last}"><hr></th:block>
+</div>
+<br>
+<table border="1" style="width:100%">
+    <thead>
+    <tr>
+        <th rowspan="2">HỌ VÀ TÊN</th>
+        <th colspan="6">CÁC THUỘC TÍNH TRẠNG THÁI</th>
+    </tr>
+    <tr>
+        <th>Index</th>
+        <th>Count</th>
+        <th>First</th>
+        <th>Last</th>
+        <th>Odd</th>
+        <th>Even</th>
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="staff, st : ${list}">
+        <tr th:style="@{|background-color:${st.odd?'pink':'cyan'}|}">
+            <td th:text="${#strings.capitalizeWords(staff.fullname)}"></td>
+            <td th:text="${st.index}"></td>
+            <td th:text="${st.count}"></td>
+            <td th:text="${st.first}"></td>
+            <td th:text="${st.last}"></td>
+            <td th:text="${st.odd}"></td>
+            <td th:text="${st.even}"></td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+<hr>
+<h3>Fill to SelectBox</h3>
+<select name="cbo">
+    <th:block th:each="staff: ${list}">
+        <option th:value="${staff.id}" th:text="${staff.fullname}"></option>
+    </th:block>
+</select>
+<!--<h3>Create Radio Button Group</h3>-->
+<!--<th:block th:each="staff: ${list}">-->
+<!--    <label>-->
+<!--        <input type="radio" name="rdo" th:value="${staff.id}">-->
+<!--        <th:block th:text="${staff.fullname}"></th:block>-->
+<!--    </label>-->
+<!--    <br>-->
+<!--</th:block>-->
+<!--Bai 6-->
+<h3>Create Radio Button Group</h3>
+<label>
+    <input type="radio" name="rdo" value="user1@gmail.com">
+    nguyễn văn user1
+</label>
+<br>
+<label>
+    <input type="radio" name="rdo" value="user2@gmail.com">
+    nguyễn văn user2
+</label>
+<br>
+<label>
+    <input type="radio" name="rdo" value="user3@gmail.com">
+    nguyễn văn user3
+</label>
+<br>
+<label>
+    <input type="radio" name="rdo" value="user4@gmail.com">
+    nguyễn văn user4
+</label>
+<br>
+<label>
+    <input type="radio" name="rdo" value="user5@gmail.com">
+    nguyễn văn user5
+</label>
+<br>
+<label>
+    <input type="radio" name="rdo" value="user6@gmail.com">
+    nguyễn văn user6
+</label>
+<br>
+</body>
+</html>
