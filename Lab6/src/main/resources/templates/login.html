@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Login with Google</title>
+    <!-- Firebase core -->
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+    <!-- Firebase Auth -->
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+</head>
+<body>
+<h1>Login with Google (Firebase)</h1>
+
+<button id="googleSignIn">Sign in with Google</button>
+
+<script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyCL7fPCKVUMPpLnQjAfIQi7KavT8pEdBJw",
+        authDomain: "assignment-ts00705.firebaseapp.com",
+        projectId: "assignment-ts00705",
+        storageBucket: "assignment-ts00705.appspot.com",
+        messagingSenderId: "1000313447098",
+        appId: "1:1000313447098:web:c1264a8b461d29473b9883",
+        measurementId: "G-3GTN9GLB3J"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    document.getElementById('googleSignIn').addEventListener('click', async () => {
+        const provider = new firebase.auth.GoogleAuthProvider();
+        try {
+            const result = await auth.signInWithPopup(provider);
+            const user = result.user;
+            const idToken = await user.getIdToken();
+
+            // POST idToken to backend to create session
+            const res = await fetch('/sessionLogin', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ idToken })
+            });
+
+            if (res.ok) {
+                // Redirect to home page where Thymeleaf will show info from session
+                window.location.href = '/';
+            } else {
+                const txt = await res.text();
+                alert('Login failed: ' + txt);
+            }
+        } catch (err) {
+            console.error(err);
+            alert('Sign-in error: ' + err.message);
+        }
+    });
+</script>
+
+
+</body>
+</html>

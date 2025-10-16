@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Đăng ký tài khoản</title>
+</head>
+<body>
+<h2>Đăng hình</h2>
+
+<form action="/account/photo" method="post" enctype="multipart/form-data">
+    <label>Ảnh đại diện: </label>
+    <input type="file" name="photo" /><br><br>
+    <button type="submit">Đăng</button>
+</form>
+
+<!-- Hiển thị thông báo hoặc hình đã upload -->
+<div th:if="${message}">
+    <h3 th:text="${message}"></h3>
+    <img th:if="${imagePath}" th:src="@{${imagePath}}" width="150" style="margin-top:10px; border:1px solid #ccc">
+</div>
+
+</body>
+</html>
