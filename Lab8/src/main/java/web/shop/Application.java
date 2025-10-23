@@ -1,13 +1,13 @@
-package com.poly.lab8;
+package web.shop;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Lab8Application {
+public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(Lab8Application.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
 }
