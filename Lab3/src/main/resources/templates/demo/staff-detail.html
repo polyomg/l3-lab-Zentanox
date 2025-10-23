@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <img th:src="@{/photos/{photo}(photo=${staff.photo})}"><hr>
+    Email:
+    <b th:text="${staff.id}"></b><hr>
+    Họ và tên:
+    <b th:text="${staff.fullname}"></b><hr>
+    Giới tính:
+    <b th:text="${staff.gender ? 'Nam' : 'Nữ'}"></b><hr>
+    Ngày sinh:
+    <b th:text="${staff.birthday}"></b><hr>
+    Cấp bậc:
+    <th:block th:switch="${staff.level}">
+        <b th:case="0">Úy</b>
+        <b th:case="1">Tá</b>
+        <b th:case="2">Tướng</b>
+        <b th:case="*">Chưa có</b>
+    </th:block><hr>
+    Salary:
+    <b th:text="${staff.salary}"></b><hr>
+</div>
+</body>
+</html>

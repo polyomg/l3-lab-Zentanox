@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}"></title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <form action="/poly/check">
+        <h1 th:text="${subject}"></h1>
+        <a>Tên đăng nhập</a>
+        <br>
+        <input name="username" placeholder="Nhập tên đăng nhập" />
+        <br>
+        <a>Mật Khậu</a>
+        <br>
+        <input type="password" name="password" placeholder="Nhập mật khẩu" />
+        <button>Check</button>
+    </form>
+
+    <h5 th:text="${message}"></h5>
+</body>
+</html>
